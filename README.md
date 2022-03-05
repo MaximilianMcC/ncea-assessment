@@ -1,7 +1,7 @@
 ![Long bay college logo](https://www.longbaycollege.com/wp-content/uploads/2020/09/Long_Bay_College_Logo_Tag2-1024x141.png)
 
 # DTS NCEA Assessment - 91883
-This is visual diary saying everything about my DTS assessment. I will be using this `md` file to keep track of what I have done each day, pseudocode, debugging, and program ideas.
+I will be using this `md` file to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas.
 <br><br>
 I am going to be completing this with the programming language `C#` and using an external library called [`Newtonsoft.Json`](https://www.newtonsoft.com/json) to handle the external JSON in the program.
 
