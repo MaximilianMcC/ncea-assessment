@@ -1,4 +1,4 @@
-﻿public class Program {
+public class Program {
 
 	public static void Main(string[] args)
 	{
@@ -41,7 +41,7 @@
 
             case 1:
                 // Make game
-                MakeGame();
+                //! MakeGame();
                 break;
 
             case 2:
@@ -67,7 +67,27 @@
         Console.Clear();
         utils.Line();
 
-        utils.CentreText("This quiz was made for my DTS Assessment. This was originally going to be a massive gam but it would have been too much work to write stuff like pseudocode.\nThe quiz reads questions and answers from an external JSON file. The entire program is OOP and uses multiple classes and methods.\n\n\nPress any key to return to menu...");
+        // Give a short explanation of the quiz/game
+        utils.CentreText("\n\n\nThis quiz was created for my DTS NCEA Assessment.\nI was originally going to make a much bigger game that had stuff like a story, boss fights, and ascii movement\nbut it was going to be too annoying to write all of the pesudocode and document all errors and debugging.\n\nThis is a really simple quiz program that reads questions from an external file.\n\n");
+        
+        // Show them a link to the GutHub repo even though they can't click on it
+        Console.ForegroundColor = ConsoleColor.Blue;
+        utils.CentreText("https://github.com/MaximilianMcC/ncea-assessment");
+        Console.ResetColor();
+
+        // Show a quick table that has all of the controlls
+        utils.CentreText("\n\n╔════════════════════════════╗");
+        utils.CentreText("║       Quiz Controlls       ║");
+        utils.CentreText("╟──────────────╥─────────────╢");
+        utils.CentreText("║ Move up      ║ up arrow    ║");
+        utils.CentreText("║ Move down    ║ down arrow  ║");
+        utils.CentreText("║ Select       ║ enter       ║");
+        utils.CentreText("╚══════════════╩═════════════╝");
+
+
+        // Go back to the menu
+        utils.CentreText("\n\n\nPress any key to return to menu...");
+        Console.ReadKey();
         Menu();
     }
 
@@ -110,30 +130,25 @@
             // Tell them that they can continue
             utils.CentreText("\n\nPress any key to continue...");
             Console.ReadKey();
-        }
 
-        // Say that all of the questons have ended
-        Console.Clear();
-        utils.Line();
-        Console.WriteLine("\n\n");
-        utils.CentreText("You Have finished the quiz! Select and option below");
+            // Say that all of the questons have ended
+            Console.Clear();
+            utils.Line();
+            Console.WriteLine("\n\n");
+            utils.CentreText("You Have finished the quiz! Select and option below");
 
-        int returnAnswer = utils.ArrowMenu(items:new[] {"Back to menu", "Exit"});
-        if (returnAnswer == 0)
-        {
-            Menu();
+            int returnAnswer = utils.ArrowMenu(items:new[] {"Back to menu", "Exit"});
+            if (returnAnswer == 0)
+            {
+                Menu();
+            }
+            else
+            {
+                utils.CentreText("\n\nThanks for playing. Your total score was: " + score);
+                utils.CentreText("Press any key to exit...");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
         }
-        else
-        {
-            utils.CentreText("\n\nThanks for playing. Your total score was: " + score);
-            utils.CentreText("Press any key to exit...");
-            Console.ReadKey();
-            Environment.Exit(0);
-        }
-	}
-
-    void MakeGame()
-    {
-        
     }
 }
