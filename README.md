@@ -1,14 +1,11 @@
 ![Long bay college logo](https://www.longbaycollege.com/wp-content/uploads/2020/09/Long_Bay_College_Logo_Tag2-1024x141.png)
 
 # DTS NCEA Assessment - 91883
-I will be using this `md` file to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas.
-<br><br>
-I am going to be completing this with the programming language `C#` and using an external library called [`Newtonsoft.Json`](https://www.newtonsoft.com/json) to handle the external JSON in the program.
+I will be using this `md` file to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. All of the quiz data will be in a JSON file.
 
 ---
 ## TODO
 1. [x] Make `Utils` and `Program` class.
-1. [x] Decide to use [`Newtonsoft.Json`](https://www.newtonsoft.com/json) or [`System.Text.Json`](https://docs.microsoft.com/en-us/dotnet/api/system.text.json?view=net-6.0)
 1. [x] Load questions from the JSON.
 1. [ ] Create questions and save in the JSON
 1. [ ] Write Pseudocode 
@@ -51,3 +48,4 @@ I am going to be completing this with the programming language `C#` and using an
 
 ### 7/3/2021
 - Added a link to the GitHub, and a simple controls menu in the `About` method.
+- Decided to switch to `System.Text.Json` instead of `Newtonsoft.Json`. Started to remove old JSON code and add new STJ code.
