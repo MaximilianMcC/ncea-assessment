@@ -1,39 +1,59 @@
 {
-	"questions": [
-		{
-			"question": "Capital of New Zealand",
-			"answers": ["Auckland", "Wellington", "Queenstown"],
-			"answer": 1
-		},
-		{
-			"question": "Have you ever played the hit game Among Us?",
-			"answers": ["Yes", "No"],
-			"answer": 0
-		},
-		{
-			"question": "What popular American game studio made Among Us?",
-			"answers": ["Microsoft", "Epic Games", "Innersloth", "Unity", "Sony", "Apple Arcade"],
-			"answer": 2
-		},
-		{
-			"question": "Which one of these is not a role",
-			"answers": ["Crewmate", "Guardian Angel", "Mechanic", "Imposter"],
-			"answer": 2
-		},
-		{
-			"question": "What year was among us made",
-			"answers": ["1904", "Chewzday innit", "2013", "2019", "2018"],
-			"answer": 4
-		},
-		{
-			"question": "What color among us is on the game icon",
-			"answers": ["blue", "pink", "Green", "Red", "Orange", "Apple iPhone 13 Pro max 1tb special edition rose gold"],
-			"answer": 3
-		},
-		{
-			"question": "What was the first Among us map?",
-			"answers": ["Mira HQ", "The Skeld", "Polus", "Airship"],
-			"answer": 1
-		}
-	]
+    "quiz": [
+        {
+            "name": "Among Us",
+            "questions": [
+                {
+                    "question": "Have you ever played the hit game Among Us?",
+                    "answers": ["Yes", "No"],
+                    "answer": 0
+                },
+                {
+                    "question": "What popular American game studio made Among Us?",
+                    "answers": ["Microsoft", "Epic Games", "Innersloth", "Unity", "Sony", "Apple Arcade"],
+                    "answer": 2
+                },
+                {
+                    "question": "Which one of these is not a role",
+                    "answers": ["Crewmate", "Guardian Angel", "Mechanic", "Imposter"],
+                    "answer": 2
+                },
+                {
+                    "question": "What year was among us made",
+                    "answers": ["1904", "Chewzday innit", "2013", "2019", "2018"],
+                    "answer": 4
+                },
+                {
+                    "question": "What color among us is on the game icon",
+                    "answers": ["blue", "pink", "Green", "Red", "Orange", "Apple iPhone 13 Pro max 1tb special edition rose gold"],
+                    "answer": 3
+                },
+                {
+                    "question": "What was the first Among us map?",
+                    "answers": ["Mira HQ", "The Skeld", "Polus", "Airship"],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Countries",
+            "questions": [
+                {
+                    "question": "What country has the largest population?",
+                    "answers": ["Russia", "China", "India", "USA", "England"],
+                    "answer": 1
+                },
+                {
+                    "question": "What is the worlds largest sized country?",
+                    "answers": ["Australia", "India", "Russia", "USA", "Brazil"],
+                    "answer": 2
+                },
+                {
+                    "question": "Where is Mount Fuji located?",
+                    "answers": ["France", "Russia", "South Africa", "USA", "Japan", "Canada"],
+                    "answer": 4
+                }
+            ]
+        }
+    ]
 }
