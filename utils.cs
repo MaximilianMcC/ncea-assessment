@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json;
 
 public class Utils {
 	
@@ -118,10 +118,9 @@ public class Utils {
 
 			// Get user input and check for what option they chose
 			input = Console.ReadKey(true);
-			Console.WriteLine(index);
 
 			if (input.Key == ConsoleKey.UpArrow) index--;
-			else if (input.Key == ConsoleKey.DownArrow) index++;
+			else if (input.Key == ConsoleKey.DownArrow || input.Key == ConsoleKey.Tab) index++;
 
 		}
 		while (input.Key != ConsoleKey.Enter);
@@ -129,8 +128,22 @@ public class Utils {
 		return index;
 	}
 
+	// Quickly deserialize json
 	public Root GetJson()
 	{
-        return JsonConvert.DeserializeObject<Root>(File.ReadAllText(@"./data.json"));
+		string jsonFile = @"./data.json";
+		return JsonSerializer.Deserialize<Root>(File.ReadAllText(jsonFile), new JsonSerializerOptions {
+			PropertyNameCaseInsensitive = true
+		});
 	}
+
+
+    // Quickly serialize json
+    public void SetJson(Root json)
+    {
+        string jsonFile = @"./data.json";
+		File.WriteAllText(JsonSerializer.Serialize(json, new JsonSerializerOptions {
+			WriteIndented = true //TODO: Figure out how I can make it 4 spaces/tab
+		}), jsonFile);
+    }
 }
