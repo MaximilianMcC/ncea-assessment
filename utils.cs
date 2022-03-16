@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System; //! remove
 
 public class Utils {
 	
@@ -34,9 +35,9 @@ public class Utils {
 	}
 
 	// Make a menu that can be navigated using the arrow keys
-	public int ArrowMenu(string title = "", params string[] items)
+	public int ArrowMenu(string[] items, string title = "", string cursor = "▶")
 	{
-		int padding = 10; //TODO: Make a way to change
+		int padding = 10;
 
 		// Make the title in the centre
 		//! Don't know if this is actually doing anything
@@ -102,9 +103,7 @@ public class Utils {
 				//TODO: Try and get a better way to make the menu items as a string like the rest of the menu
 				if (i == index)
 				{
-                    // Expected output:  ║▶ {items[i]}{backgroundSpace}{space}║
-
-					CentreText($"║▶ {items[i]}{space}║");
+					CentreText($"║{cursor} {items[i]}{space}║");
 				}
 				else
 				{
@@ -128,6 +127,33 @@ public class Utils {
 		return index;
 	}
 
+	// Get input with colord text
+	public string GetTextInput(string prompt)
+	{
+        Console.Write(prompt);
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        string input = Console.ReadLine().Trim();
+        Console.ResetColor();
+		return input;
+	}
+
+	// Get number input with colord text
+	public int GetNumberInput(string prompt, string errorMessage = "Please use a number...")
+	{
+		while (true)
+		{
+            if (int.TryParse(GetTextInput(prompt), out int result))
+            {
+                return result;
+            }
+            else
+            {
+                // Console.WriteLine(errorMessage);
+				ClearLine();
+            }
+		}
+	}
+
 	// Quickly deserialize json
 	public Root GetJson()
 	{
@@ -142,8 +168,38 @@ public class Utils {
     public void SetJson(Root json)
     {
         string jsonFile = @"./data.json";
-		File.WriteAllText(JsonSerializer.Serialize(json, new JsonSerializerOptions {
+		string serializedJson = JsonSerializer.Serialize(json, new JsonSerializerOptions {
 			WriteIndented = true //TODO: Figure out how I can make it 4 spaces/tab
-		}), jsonFile);
+		});
+		File.WriteAllText(jsonFile, serializedJson);
     }
+
+	// Get console input in the centre of the screen
+	public string CentreInput(string prompt)
+	{
+		int originalY = Console.CursorLeft;
+		CentreText(prompt);
+		string finalString = "";
+		ConsoleKeyInfo inputKey;
+		
+		do
+		{
+			inputKey = Console.ReadKey();
+			if (inputKey.Key == ConsoleKey.Backspace) finalString = "among";
+			else if (inputKey.Key == ConsoleKey.Spacebar) finalString += " ";
+			else finalString += inputKey.Key;
+			Console.SetCursorPosition(Console.CursorLeft, originalY);
+			CentreText(finalString.ToLower());
+		}
+		while (inputKey.Key != ConsoleKey.Enter);
+		return finalString;
+	}
+
+	public void ClearLine()
+	{
+		int originalPosition = Console.CursorLeft;
+		Console.SetCursorPosition(0, Console.CursorTop);
+		Console.Write(" ", Console.WindowWidth);
+		Console.SetCursorPosition(originalPosition, Console.CursorTop);
+	}
 }
