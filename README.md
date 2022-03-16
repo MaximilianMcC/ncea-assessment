@@ -1,20 +1,21 @@
 ![Long bay college logo](https://www.longbaycollege.com/wp-content/uploads/2020/09/Long_Bay_College_Logo_Tag2-1024x141.png)
 
 # DTS NCEA Assessment - 91883
-I will be using this GitHub repo to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. I have made the program in C#. **important:** You ___*need*___ to use a terminal that supports UTF-8. Don't use cmd and instead use something like [Windows Terminal](https://www.microsoft.com/en-nz/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
+I will be using this GitHub repo to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. I have made the program in C#. **important:** You ___*need*___ to use a terminal that supports UTF-8. Don't use cmd and instead use something like [Windows Terminal](https://www.microsoft.com/en-nz/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It will work without it, but you get a better experience when you use something that supports UTF-8.
 <br><br>
 **What is the purpose of your quiz?**
 <br>
-My quiz program allows people to create and share quizes that they have made. It uses an external JSON file to do it so people can easily share different quizes.
+My quiz program allows people to create and share quizzes that they have made. It uses an external JSON file to do it so people can easily share different quizzes.
 <br>
 **What style of quiz are you doing?**
 <br>
-My quiz is designed for people any age, as long as they can read the questions. It has been designed so that you can easiy answer the questions, and see the results.
+My quiz is designed for people any age, as long as they can read the questions. It has been designed so that you can easily answer the questions, and see the results.
 
 ---
 ## TODO
 1. [x] Load questions from the JSON.
-1. [ ] Create questions and save in the JSON
+1. [x] Create questions and save in the JSON
+1. [x] Remove questions from the JSON
 1. [ ] Write Pseudocode 
 1. [ ] Refactor all code before exporting to exe
 
@@ -59,7 +60,7 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Removed all newtonsoft code
 
 ### 8/3/2022
-- Started to learn about `System.Text.JSon`.
+- Started to learn about `System.Text.JSon` in another test program.
 
 ### 9/3/2022
 - Added a new method called `GetJson` into the `Utils` class that gives the Deserialized JSON quicker so I don't need to write it every time.
@@ -67,5 +68,17 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Started working on the `MakeGame` method so that people can make their own quiz.
 - Made `SetJson` function that quickly serializes the JSON back into the file.
 - Removed a random `WriteLine` that printed the `index` from the `ArrowMenu` method.
-- Started to tes the `MakeGame` method
-- Added the ability to use the `tab` key to cycle through `ArrowMenu`
+- Started to tes the `MakeGame` method.
+- Added the ability to use the `tab` key to cycle through `ArrowMenu`.
+
+### 16/3/2022
+- Made a quick prototype of the `MakeGame` function, then started to rewrite it.
+- Added a `GetTextInput` method that gets quick console input.
+- Added a `GetNumberInput` function that lets you get quick console input returned as an integer.
+- Started to make a `CentreInput` method that will let you type something in the middle of the screen. Might remove.
+- Made a `RemoveGame` method that lets the user remove a quiz that they have made or don't like.
+- Added `ClearLine` function to clear a single line from the console instead of the entire console.
+
+### 17/3/2022
+- Added an optional parameter to have a custom "cursor" icon in the `ArrowMenu` method. Needed to change where the title parameter was declared.
+- Finished the `RemoveGame` method.
