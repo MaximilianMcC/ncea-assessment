@@ -1,5 +1,6 @@
+//! remove when ide working
 using System;
-using System.Threading;
+using System.Collections.Generic;
 
 public class Program {
 
@@ -34,7 +35,7 @@ public class Program {
         Console.ResetColor();
 
         // Game start Menu
-        int menuInput = utils.ArrowMenu("Please Select an option", new[] { "Play Quiz", "Create Quiz", "About", "Exit" });
+        int menuInput = utils.ArrowMenu(new[] { "Play Quiz", "Create Quiz", "Remove Quiz", "About", "Exit" }, "Please Select an option");
         switch (menuInput)
         {
             case 0:
@@ -48,7 +49,12 @@ public class Program {
                 break;
 
             case 2:
-                // Load
+                // Remove
+                RemoveGame();
+                break;
+
+            case 3:
+                // About
                 About();
                 break;
 
@@ -79,6 +85,7 @@ public class Program {
         utils.CentreText("╟──────────────╥─────────────╢");
         utils.CentreText("║ Move up      ║ up arrow    ║");
         utils.CentreText("║ Move down    ║ down arrow  ║");
+        utils.CentreText("║ Next item    ║ tab         ║");
         utils.CentreText("║ Select       ║ enter       ║");
         utils.CentreText("╚══════════════╩═════════════╝");
 
@@ -99,9 +106,9 @@ public class Program {
         utils.Line();
 
         // Ask the user to select a quiz
-        string[] quizNames = new string[json.Quiz.ToArray().Length];
+        string[] quizNames = new string[json.Quiz.Count];
         for (int i = 0; i < quizNames.Length; i++) quizNames[i] = json.Quiz[i].Name;
-        int quizSelect = utils.ArrowMenu("Select a quiz", quizNames);
+        int quizSelect = utils.ArrowMenu(quizNames, "Select a quiz");
         
         int score = 0;
 
@@ -112,7 +119,7 @@ public class Program {
             Console.Clear();
             utils.Line();
 
-            int answer = utils.ArrowMenu(question.Question, question.Answers.ToArray());
+            int answer = utils.ArrowMenu(question.Answers.ToArray(), question.Question);
 
             // Check for if they gave the correct answer
             if (answer == question.Answer)
@@ -151,69 +158,93 @@ public class Program {
         // Basic setup
         Utils utils = new Utils();
         Root json = utils.GetJson();
+        Console.Clear();
+        
+        // Ask them for the quiz name and make the quiz
+        string quizName = utils.CentreInput("test");
+        List<QuestionObject> questions = new List<QuestionObject>();
+        Quiz quiz = new Quiz() { Name = quizName, Questions = questions } ;
 
-
-        // Ask the user for a quiz name
-        Console.Write("What is the name of the quiz? ");
-        string quizName = Console.ReadLine().ToString().Trim();
-
-        // Ask them to enter a question, or answers
-        int choice = utils.ArrowMenu("Please select an option", new[] { "Add question", "Back to menu" });
-        if (choice == 0)
+        while (true)
         {
-            // Make initial variables
-            string questionName;
-            List<string> answers = new List<string>();
-            int answer = 0;
-
-            // Ask for the question and answers
-            Console.Write("question name: ");
-            questionName = Console.ReadLine().ToString().Trim();
-            
-            // Ask for how many answers
-            while (true)
+            // Ask them what they want to do
+            int selection = utils.ArrowMenu(new[] { "Add question", "Finish quiz", "Back to menu" }, "Select an option");
+            if (selection == 0)
             {
-                Console.Write("How many answers do you want? ");
-                if (int.TryParse(Console.ReadLine(), out int numberOfAnswers))
-                {
-                    // Get all of the answers
-                    for (int i = 0; i < numberOfAnswers; i++)
-                    {
-                        Console.Write($"Answer for question {i++}: ");
-                        answers.Append(Console.ReadLine().Trim());
-                    }
+                Console.Clear();
+                
+                // Ask them for what the question is and how many answers
+                string questionName = utils.GetTextInput("Question name: ");
+                int answersLength = utils.GetNumberInput("How many answers? ");
 
-                    // get the correct answer
-                    Console.WriteLine("\n\nSelect the correct answer");
-                    for (int i = 0; i < answers.Count; i++)
-                    {
-                        Console.WriteLine($"{i++}) {answers[i]}");
-                    }
-                    while (true)
-                    {
-                        Console.Write("Correct answer: ");
-                        if (int.TryParse(Console.ReadLine(), out answer))
-                        {
-                            answer -= 1;
-                            Console.WriteLine("You have set the correct answer to " + answers[answer]);
-                            break;
-                        }
-                    }
+                // Ask them what all of the answers are
+                List<string> questionAnswers = new List<string>();
+                for (int i = 0; i < answersLength; i++)
+                {
+                    questionAnswers.Add(utils.GetTextInput($"Answer {i + 1}) "));
                 }
-                break;
+
+                // Ask them for what the answer is
+                int questionAnswer = utils.GetNumberInput("Answer index: ");
+                questionAnswer--;
+
+                // Create and add the question to the quiz
+                questions.Add(new QuestionObject() {
+                    Question = questionName,
+                    Answers = questionAnswers,
+                    Answer = questionAnswer
+                });
+            }
+            else if (selection == 1)
+            {
+                Console.Clear();
+
+                // Generate a new quiz with the questions
+                Root deserializedJson = utils.GetJson();
+                deserializedJson.Quiz.Add(quiz);
+                utils.SetJson(deserializedJson);
+            }
+            else if (selection == 2)
+            {
+                // Go back to the menu
+                Menu();
             }
 
-            // Create the question and add it to the quiz
-            QuestionObject question = new QuestionObject()
-            {
-                Question = questionName,
-                Answers = answers,
-                Answer = answer
-            };
+        }
 
+    }
 
+    void RemoveGame()
+    {
+        // Basic setup
+        Utils utils = new Utils();
+        Root deserializedJson = utils.GetJson();
 
-            // Add it to the quiz
+        Console.Clear();
+        utils.Line();
+
+        // Ask the user to select a quiz
+        string[] quizNames = new string[deserializedJson.Quiz.Count];
+        for (int i = 0; i < quizNames.Length; i++) quizNames[i] = deserializedJson.Quiz[i].Name;
+        int quizSelect = utils.ArrowMenu(quizNames, "Select a quiz to remove", "🗑");
+
+        // Ask them if they are sure they want to delete it
+        int wantToDelete = utils.ArrowMenu(new[] { "Delete quiz", "Cancel" }, $"Are you sure you want to delete '{deserializedJson.Quiz[quizSelect]}'?");
+        if (wantToDelete == 0)
+        {
+            // Remove the quiz
+            deserializedJson.Quiz.Remove(deserializedJson.Quiz[quizSelect]);
+            utils.SetJson(deserializedJson);
+            
+            // Tell them that they removed it
+            utils.CentreText("\n\nThe quiz has successfully been removed.\nPress any key to return to menu...");
+            Console.ReadKey();
+            Menu();
+        }     
+        else
+        {
+            // Put them back to the menu
+            Menu();
         }
 
     }
