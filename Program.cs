@@ -1,4 +1,3 @@
-//! remove when ide working
 using System;
 using System.Collections.Generic;
 
@@ -6,11 +5,10 @@ public class Program {
 
 	public static void Main(string[] args)
 	{
-
 		// General stuff
 		Console.OutputEncoding = System.Text.Encoding.UTF8;
 		Console.Title = "NCEA DTS Assessment";
-
+        
 		// Start the game
         Program program = new Program();
         program.Menu();
@@ -59,7 +57,7 @@ public class Program {
                 break;
 
             case 4:
-                // About
+                // Exit
                 Environment.Exit(0);
 				break;
         }
@@ -98,7 +96,6 @@ public class Program {
 
 	void PlayGame()
 	{
-
         // Basic setup
         Utils utils = new Utils();
         Root json = utils.GetJson();
@@ -139,14 +136,20 @@ public class Program {
             // Reset the color, give them their total score then wait a few seconds
             Console.ResetColor();
             utils.CentreText("Total score: " + score);
-            utils.CentreText("\n\nPress any key to go onto the next question...");
+            utils.CentreText("\n\nPress any key to proceed...");
             Console.ReadKey();
         }
 
-        // When they have finished a quiz then bring them back to the menu
+        // When they have finished a quiz then display a message
         Console.Clear();
         utils.Line();
-        utils.CentreText($"You completed the quiz🤯🥳\nFinal score: {score}/{json.Quiz[quizSelect].Questions.ToArray().Length}");
+        int questionsLength = json.Quiz[quizSelect].Questions.Count;
+
+        utils.CentreText($"You completed the quiz🤯🥳\nFinal score: {score}/{questionsLength}");
+        if (score <= 0) utils.CentreText("You got no questions correct😂");
+        else if (score >= questionsLength) utils.CentreText("You got all correct😤👍");
+
+        // Bring them back to the menu
         utils.CentreText("\n\nPress any key to go back to the main menu...");
         Console.ReadKey();
         Menu();
@@ -161,7 +164,7 @@ public class Program {
         Console.Clear();
         
         // Ask them for the quiz name and make the quiz
-        string quizName = utils.CentreInput("test");
+        string quizName = Console.ReadLine().Trim();
         List<QuestionObject> questions = new List<QuestionObject>();
         Quiz quiz = new Quiz() { Name = quizName, Questions = questions } ;
 
@@ -185,7 +188,7 @@ public class Program {
                 }
 
                 // Ask them for what the answer is
-                int questionAnswer = utils.GetNumberInput("Answer index: ");
+                int questionAnswer = utils.GetNumberInput("Answer number: ");
                 questionAnswer--;
 
                 // Create and add the question to the quiz
@@ -246,6 +249,5 @@ public class Program {
             // Put them back to the menu
             Menu();
         }
-
     }
 }
