@@ -104,16 +104,12 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Finished the `Program.cs` pseudocode
 
 
-
-<!-- https://tableconvert.com/markdown-generator -->
-| **Error**                                              | **Problem**                     | **Fix**             |
-|--------------------------------------------------------|---------------------------------|---------------------|
-| `;` expected                                           | Forgot to add a semicolon       | Added the semicolon |
-| Cannot implicitly convert type `List<T>` to 'string[]` | Tried to use a List as a String | Used `.ToArray()`  |
-| IndexOutOfRange                                        | I accadentally added to the array instead of removing                               | Chaneged the `+` to a `-`                 |
-| `;` expected                                                       | Forgot to add a semicolon                                | Added the semicolon                    |
-| `i` dose not exist in the current context              | Used `i` instead of `index`                    | Switched `i` for `index`
-| Can not convert type `char` to `string`                | Used single quotes instead of double quotes                       | Used double quotes                    |
-|                                                        |                                 |                     |
-|                                                        |                                 |                     |
-|                                                        |                                 |                     |
+## Debug and testing stuff
+| **Error** | **Problem** | **Fix** |
+|---|---|---|
+| `;` expected | Forgot to add a semicolon | Added the semicolon |
+| Cannot implicitly convert type `List<T>` to `string[]` | Tried to use a List as a String | Used `.ToArray()` |
+| IndexOutOfRange | I accadentally added to the array instead of removing | Chaneged the `+` to a `-` |
+| `;` expected | Forgot to add a semicolon | Added the semicolon |
+| `i` does not exist in the current context | Used `i` instead of `index` | Switched `i` for `index`
+| Can not convert type `char` to `string` | Used single quotes instead of double quotes | Used double quotes |
