@@ -33,6 +33,7 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Deleted version 1 and started again from scratch. Everything got really complicated for no reason. I also decided to make the new game in a different style because it was going to take too long to write the pseudocode and log every single little error and change.
 ---
 ## Version 2
+
 ### 4/3/2022
 - Created project
 - Made `Program`, `Game`, and `Utils` classes.
@@ -52,7 +53,7 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Made an `About` method that just gave some info about the game and the ncea stuff.
 - Switched encoding to `UTF-8` so that I can use emojis and special characters. (Need to use a terminal such as WT to run now)
 - Learnt the basics of how to use GitHub and uploaded all current code.
-- Fixed stuff like spelling amd grammar in the code😳
+- Fixed stuff like spelling and grammar in the code😳
 
 ### 7/3/2022
 - Added a link to the GitHub, and a simple controls menu in the `About` method.
@@ -82,3 +83,37 @@ My quiz is designed for people any age, as long as they can read the questions. 
 ### 17/3/2022
 - Added an optional parameter to have a custom "cursor" icon in the `ArrowMenu` method. Needed to change where the title parameter was declared.
 - Finished the `RemoveGame` method.
+- Removed `ClearLine` method because it wasn't being used.
+- Started to improve `CentreInput` method, but thinking of removing it because there isn't really any point and it looks really strange.
+
+### 23/3/2022
+- Added a small part that tells you a custom message if you get all of the questions correct, or if you got none of the questions correct.
+
+### 24/3/2022
+- Created `pseudocode.md` so that I can start writing pseudocode.
+- Started to write pseudocode for `Program.cs`
+
+### 26/3/2022
+- Added background music that loops
+- Removed the background music because it didn't suit the style of the game
+
+### 30/3/2022
+- Remade the pseudocode file because I was making it too complicated for no reason
+- Removed the `CentreInput` method because it wasn't used
+- Found everywhere where `json.ToArray().Length` was used and changed it to `json.Count`
+- Finished the `Program.cs` pseudocode
+
+
+
+<!-- https://tableconvert.com/markdown-generator -->
+| **Error**                                              | **Problem**                     | **Fix**             |
+|--------------------------------------------------------|---------------------------------|---------------------|
+| `;` expected                                           | Forgot to add a semicolon       | Added the semicolon |
+| Cannot implicitly convert type `List<T>` to 'string[]` | Tried to use a List as a String | Used `.ToArray()`  |
+| IndexOutOfRange                                        | I accadentally added to the array instead of removing                               | Chaneged the `+` to a `-`                 |
+| `;` expected                                                       | Forgot to add a semicolon                                | Added the semicolon                    |
+| `i` dose not exist in the current context              | Used `i` instead of `index`                    | Switched `i` for `index`
+| Can not convert type `char` to `string`                | Used single quotes instead of double quotes                       | Used double quotes                    |
+|                                                        |                                 |                     |
+|                                                        |                                 |                     |
+|                                                        |                                 |                     |
