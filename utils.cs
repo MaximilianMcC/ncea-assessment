@@ -148,8 +148,7 @@ public class Utils {
             }
             else
             {
-                // Console.WriteLine(errorMessage);
-				ClearLine();
+                Console.WriteLine(errorMessage);
             }
 		}
 	}
@@ -163,7 +162,6 @@ public class Utils {
 		});
 	}
 
-
     // Quickly serialize json
     public void SetJson(Root json)
     {
@@ -173,33 +171,4 @@ public class Utils {
 		});
 		File.WriteAllText(jsonFile, serializedJson);
     }
-
-	// Get console input in the centre of the screen
-	public string CentreInput(string prompt)
-	{
-		int originalY = Console.CursorLeft;
-		CentreText(prompt);
-		string finalString = "";
-		ConsoleKeyInfo inputKey;
-		
-		do
-		{
-			inputKey = Console.ReadKey();
-			if (inputKey.Key == ConsoleKey.Backspace) finalString = "among";
-			else if (inputKey.Key == ConsoleKey.Spacebar) finalString += " ";
-			else finalString += inputKey.Key;
-			Console.SetCursorPosition(Console.CursorLeft, originalY);
-			CentreText(finalString.ToLower());
-		}
-		while (inputKey.Key != ConsoleKey.Enter);
-		return finalString;
-	}
-
-	public void ClearLine()
-	{
-		int originalPosition = Console.CursorLeft;
-		Console.SetCursorPosition(0, Console.CursorTop);
-		Console.Write(" ", Console.WindowWidth);
-		Console.SetCursorPosition(originalPosition, Console.CursorTop);
-	}
 }
