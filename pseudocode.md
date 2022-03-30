@@ -89,5 +89,97 @@ Make a RemoveGame method
         Set the json to the new removed quiz
         Tell them using {utils.CentrText} that they removed it
     If they didnt then go back to menu
+```
+
+## JSON.cs
+```
+Make a Root class
+    Make a list with type as Quiz getter and setter
+
+Make a Quiz class
+    Make a string getter and setter for name
+    Make a list of QuestionObjects getter and setter
+
+Make a QuestionObject class
+    Make a string called question getter and setter
+    Make a list of strings called answers getter and setter
+    Make an int called answer getter and setter
+```
+
+## Utils.cs
+```
+import {System.Text.Json}
+
+Make a CentreText method with parameters {string text}
+Split the text by {"\n"} and store in a new string[] called lines
+Loop through each line
+    Set the console cursor position to {(Console.WindowWidth - line.Length) / 2, Console.CursorTop}
+    Print the current line
+
+Make a new Line method
+    For to loop through {Console.WindowWidth}
+        Print {"-"} to the console
+
+Make a ArrowMenu method with the parameters {string[] items, string title = "", string cursor = "▶"}
+    Make an integer called padding and set the value to 10
+    If the title length is not even make it even by adding {" "} to the end
+    Find the longest item in the items array
+    Make a new variable called menuWidth and set it to {2 + (padding * 2) + longestItem}
+    Make a new string called menuHeader and set it to {"╔"} loop over menuWidth and add {"═"} to menuHeader
+    Add {"╗\n"} to menuHeader
+    Check for if {title != ""} if it is then
+        Make a new string called space with a value of ""
+        Loop through {(menuWidth - title.Length) / 2} and add {" "} to space
+        Make a new string called menuHeader and set it to {$"║{space}{title}{space}║\n╟"}
+        Loop through menuWidth and add {"─"} to MenuHeader
+        Add {"╢"} to menu header
+    Call {CentreText(MenuHeader)}
+    Make a new string called menuFooter and set it to {"╚"}
+    Loop through menuWidth and add {"═"} to menuFooter
+    Add {"╝"} to MenuFooter
+    Make a new int called index and set it to 0
+    Make a new ConsoleKeyInfo called input
+    Make a new int called menuItemsStart and set it to {Console.CursorTop}
+    do
+        Set the console cursor position to {Console.CursorLeft, menuItemsStart}
+        Check for if {index > items.Length - 1} and set index to 0
+        Check else if {index < 0} set {index = items.Length - 1}
+        Make a new string[] called menuItems and set the length to {items.Length}
+        Loop through {items.Length}
+            make a new string called space with a value of {""}
+            Loop through {menuWidth - items[i].Length - 2} and add {" "} to space
+            Check for if {i == index} then {CentreText($"║{cursor} {items[i]}{space}║")}
+            else {CentreText($"║  {items[i]}{space}║")}
+        Call {CentreText(menuFooter)}
+        Set input to {Console.ReadKey(true)}
+        If {input.Key == ConsoleKey.UpArrow} then {index--}
+        Else if {input.Key == ConsoleKey.DownArrow || input.Key == ConsoleKey.Tab} then {index++}
+        End the do...while loop with {while (input.Key != ConsoleKey.Enter)}
+    return index
+
+Make a GetTextInput method with the parameters {string prompt}
+    prin the prompt
+    Set the foreground color to Yellow
+    Make a new string called input and set it to {Console.ReadLine().Trim()}
+    Reset the console color
+    return input
+
+Make a GetNumberInput method with the parameters {string prompt, string errorMessage = "Please use a number..."}
+    Make a {while (true)} loop
+        Check for {if (int.TryParse(GetTextInput(prompt), out int result))} then return result
+        Else print errorMessage to the screen
+
+Make a method called GetJson
+    Make a new string called jsonFile with the value {@"./data.json"}
+    {return JsonSerializer.Deserialize<Root>(File.ReadAllText(jsonFile), new JsonSerializerOptions {
+			PropertyNameCaseInsensitive = true
+	});}
+
+Make a SetJson method with the parameters {Root json}
+    Make a new string called jsonFile with the value {@"./data.json"}
+    {		string serializedJson = JsonSerializer.Serialize(json, new JsonSerializerOptions {
+			WriteIndented = true
+	});}
+    Write all text in serializedJson to the json file
 
 ```
