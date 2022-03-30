@@ -16,7 +16,7 @@ My quiz is designed for people any age, as long as they can read the questions. 
 1. [x] Load questions from the JSON.
 1. [x] Create questions and save in the JSON
 1. [x] Remove questions from the JSON
-1. [ ] Write Pseudocode 
+1. [x] Write Pseudocode 
 1. [ ] Refactor all code before exporting to exe
 
 ---
