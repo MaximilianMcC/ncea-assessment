@@ -2,14 +2,11 @@
 
 # DTS NCEA Assessment - 91883
 I will be using this GitHub repo to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. I have made the program in C#. **important:** You ___*need*___ to use a terminal that supports UTF-8. Don't use cmd and instead use something like [Windows Terminal](https://www.microsoft.com/en-nz/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It will work without it, but you get a better experience when you use something that supports UTF-8.
-<br><br>
-**What is the purpose of your quiz?**
-<br>
-My quiz program allows people to create and share quizzes that they have made. It uses an external JSON file to do it so people can easily share different quizzes.
-<br>
-**What style of quiz are you doing?**
-<br>
-My quiz is designed for people any age, as long as they can read the questions. It has been designed so that you can easily answer the questions, and see the results.
+
+
+**What is the purpose of your quiz and what is it?**
+My quiz has been made so that other people can create, share, and play quizzes that they create with the program. This means that you can use the same program, but get different quizzes. All of the questions are stored in an external `JSON` file so that people who know how to write json can add their own questions in there. There is also a more user-friendly quiz genrator inside the program.
+
 
 ---
 ## TODO
@@ -108,6 +105,11 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Removed the feature to print half a line in `Utils.Line` because it's never used
 - Finised the `Utils.cs` pseudocode
 
+### 31/3/2022
+- Added error testing
+
+---
+
 ## Debug and testing stuff
 | **Error** | **Problem** | **Fix** |
 |---|---|---|
@@ -117,6 +119,24 @@ My quiz is designed for people any age, as long as they can read the questions. 
 | `;` expected | Forgot to add a semicolon | Added the semicolon |
 | `i` does not exist in the current context | Used `i` instead of `index` | Switched `i` for `index`
 | Can not convert type `char` to `string` | Used single quotes instead of double quotes | Used double quotes |
+| Menu input in `ArrowMenu` is backwards | Down arrow makes the menu go up, and up arrow make sit go down | Switched what each key does |
+
+---
 
 ## C# Programming Conventions
 I have followed C# programming conventions in this program. Some examples include using correct Naming Conventions, Using switch when necessary, Avoiding unneeded and messy code, along with others.
+
+---
+
+## C# Error testing
+| **Enterd data** | **Expected output** | **Output** | **Correcrt** |
+|---|---|---|---|
+| `"test"` | `"Please use a number"` will be returned | `"Please use a number"` | ✅
+| `ConsoleKey.DownArrow` | Menu index will increase | Menu index decreased | ❌
+| `ConsoleKey.UpArrow` | Menu index will decrease | Menu index increased | ❌
+| `ConsoleKey.DownArrow` | Menu index will decrease | Menu index increased | ✅
+| `ConsoleKey.UpArrow` | Menu index will increase | Menu index decreased | ✅
+| `ConsoleKey.Enter` | Index should be returned | Index is too high | ❌
+| `ConsoleKey.Enter` | Index should be returned | Correct index | ✅
+| `12` | `12` will be returned | `12` | ✅
+| `"Test"` | `"test"` will be rturned | `"test"` | ✅
