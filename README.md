@@ -102,7 +102,11 @@ My quiz is designed for people any age, as long as they can read the questions. 
 - Removed the `CentreInput` method because it wasn't used
 - Found everywhere where `json.ToArray().Length` was used and changed it to `json.Count`
 - Finished the `Program.cs` pseudocode
-
+- Started the `JSON.cs` pseudocode
+- Finished the `JSON.cs` pseudocode
+- Started `Utils.cs` pseudocode
+- Removed the feature to print half a line in `Utils.Line` because it's never used
+- Finised the `Utils.cs` pseudocode
 
 ## Debug and testing stuff
 | **Error** | **Problem** | **Fix** |
@@ -113,3 +117,6 @@ My quiz is designed for people any age, as long as they can read the questions. 
 | `;` expected | Forgot to add a semicolon | Added the semicolon |
 | `i` does not exist in the current context | Used `i` instead of `index` | Switched `i` for `index`
 | Can not convert type `char` to `string` | Used single quotes instead of double quotes | Used double quotes |
+
+## C# Programming Conventions
+I have followed C# programming conventions in this program. Some examples include using correct Naming Conventions, Using switch when necessary, Avoiding unneeded and messy code, along with others.
