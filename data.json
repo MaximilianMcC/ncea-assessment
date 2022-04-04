@@ -1,59 +1,168 @@
 {
-    "quiz": [
+  "Quiz": [
+    {
+      "Name": "Among Us",
+      "Questions": [
         {
-            "name": "Among Us",
-            "questions": [
-                {
-                    "question": "Have you ever played the hit game Among Us?",
-                    "answers": ["Yes", "No"],
-                    "answer": 0
-                },
-                {
-                    "question": "What popular American game studio made Among Us?",
-                    "answers": ["Microsoft", "Epic Games", "Innersloth", "Unity", "Sony", "Apple Arcade"],
-                    "answer": 2
-                },
-                {
-                    "question": "Which one of these is not a role",
-                    "answers": ["Crewmate", "Guardian Angel", "Mechanic", "Imposter"],
-                    "answer": 2
-                },
-                {
-                    "question": "What year was among us made",
-                    "answers": ["1904", "Chewzday innit", "2013", "2019", "2018"],
-                    "answer": 4
-                },
-                {
-                    "question": "What color among us is on the game icon",
-                    "answers": ["blue", "pink", "Green", "Red", "Orange", "Apple iPhone 13 Pro max 1tb special edition rose gold"],
-                    "answer": 3
-                },
-                {
-                    "question": "What was the first Among us map?",
-                    "answers": ["Mira HQ", "The Skeld", "Polus", "Airship"],
-                    "answer": 1
-                }
-            ]
+          "Question": "Have you ever played the hit game Among Us?",
+          "Answers": [
+            "Yes",
+            "No"
+          ],
+          "Answer": 0
         },
         {
-            "name": "Countries",
-            "questions": [
-                {
-                    "question": "What country has the largest population?",
-                    "answers": ["Russia", "China", "India", "USA", "England"],
-                    "answer": 1
-                },
-                {
-                    "question": "What is the worlds largest sized country?",
-                    "answers": ["Australia", "India", "Russia", "USA", "Brazil"],
-                    "answer": 2
-                },
-                {
-                    "question": "Where is Mount Fuji located?",
-                    "answers": ["France", "Russia", "South Africa", "USA", "Japan", "Canada"],
-                    "answer": 4
-                }
-            ]
+          "Question": "What year was Among Us released?",
+          "Answers": [
+            "2020",
+            "2019",
+            "2018",
+            "2021"
+          ],
+          "Answer": 2
+        },
+        {
+          "Question": "Which of these roles are NOT in the game?",
+          "Answers": [
+            "Imposter",
+            "Crewmate",
+            "Engineer",
+            "Navigator",
+            "Guardian Angel"
+          ],
+          "Answer": 3
+        },
+        {
+          "Question": "What was the first Among Us map?",
+          "Answers": [
+            "Polus",
+            "The Airship",
+            "Mira HQ",
+            "The Skeld"
+          ],
+          "Answer": 3
+        },
+        {
+          "Question": "What color is the crewmate on the game icon",
+          "Answers": [
+            "Green",
+            "Pink",
+            "Purple",
+            "Yellow",
+            "Blue",
+            "Red",
+            "Orange",
+            "Black"
+          ],
+          "Answer": 5
         }
-    ]
+      ]
+    },
+    {
+      "Name": "Countries",
+      "Questions": [
+        {
+          "Question": "What is the biggest country?",
+          "Answers": [
+            "India",
+            "Russia",
+            "China",
+            "USA",
+            "Australia"
+          ],
+          "Answer": 1
+        },
+        {
+          "Question": "What is the smallest country?",
+          "Answers": [
+            "England",
+            "Fiji",
+            "South Africa",
+            "Vatican City",
+            "Madagascar"
+          ],
+          "Answer": 3
+        },
+        {
+          "Question": "What country has the biggest population",
+          "Answers": [
+            "Russia",
+            "India",
+            "China",
+            "Canada"
+          ],
+          "Answer": 2
+        },
+        {
+          "Question": "Where is Mount Fuji located?",
+          "Answers": [
+            "Fiji",
+            "Japan",
+            "Germany"
+          ],
+          "Answer": 1
+        },
+        {
+          "Question": "What is the capital of Ukrane?",
+          "Answers": [
+            "Schu",
+            "Rame",
+            "Kyiv",
+            "Beui",
+            "Jeou",
+            "Koru"
+          ],
+          "Answer": 2
+        },
+        {
+          "Question": "Where is the Grand Canyon located?",
+          "Answers": [
+            "Russia",
+            "England",
+            "China",
+            "USA",
+            "Japan",
+            "Germany",
+            "Canada"
+          ],
+          "Answer": 3
+        }
+      ]
+    },
+    {
+      "Name": "Social Media",
+      "Questions": [
+        {
+          "Question": "What is the most popular social media?",
+          "Answers": [
+            "Instagram",
+            "TikTok",
+            "Facebook",
+            "YouTube kids",
+            "Snapchat",
+            "Reddit"
+          ],
+          "Answer": 2
+        },
+        {
+          "Question": "Which Social Media platform has the most videos?",
+          "Answers": [
+            "Facebook Watch",
+            "YouTube",
+            "Instagram",
+            "Reddit"
+          ],
+          "Answer": 1
+        },
+        {
+          "Question": "Does Social Media melt your brain and vilen!1!!",
+          "Answers": [
+            "Yes!!1!",
+            "NOOOO"
+          ],
+          "Answer": 1
+        }
+      ]
+    }
+  ]
 }
