@@ -1,5 +1,4 @@
 using System.Text.Json;
-using System; //! remove
 
 public class Utils {
 	
@@ -17,34 +16,29 @@ public class Utils {
 	}
 
 	// Make a line accross the screen
-	public void Line(bool half = false)
+	public void Line()
 	{
-		// Set the width and line
-		int width = Console.WindowWidth;
-		if (half) width = width / 2;
-		string line = "";
-
 		// Generate the line
-		for (int i = 0; i < width; i++)
+		for (int i = 0; i < Console.WindowWidth; i++)
 		{
-			line += "─";
+			Console.Write("─");
 		}
-
-		// Print the line
-		CentreText(line);
+		Console.WriteLine();
 	}
 
 	// Make a menu that can be navigated using the arrow keys
-	public int ArrowMenu(string[] items, string title = "", string cursor = "▶")
+	public int ArrowMenu(string[] items, string title = "")
 	{
 		int padding = 10;
 
 		// Make the title in the centre
 		//! Don't know if this is actually doing anything
+		Console.WriteLine(title.Length);
 		if (title.Length % 2 == 0) title += " ";
+        Console.WriteLine(title.Length);
 
-		// Get the longest item
-		int longestItem = title.Length;
+        // Get the longest item
+        int longestItem = title.Length;
 		foreach (string item in items)
 		{
 			if (item.Length > longestItem) longestItem = item.Length;
@@ -103,7 +97,7 @@ public class Utils {
 				//TODO: Try and get a better way to make the menu items as a string like the rest of the menu
 				if (i == index)
 				{
-					CentreText($"║{cursor} {items[i]}{space}║");
+					CentreText($"║> {items[i]}{space}║");
 				}
 				else
 				{
@@ -134,6 +128,7 @@ public class Utils {
         Console.ForegroundColor = ConsoleColor.Yellow;
         string input = Console.ReadLine().Trim();
         Console.ResetColor();
+		
 		return input;
 	}
 
@@ -157,6 +152,7 @@ public class Utils {
 	public Root GetJson()
 	{
 		string jsonFile = @"./data.json";
+		// Give them the json
 		return JsonSerializer.Deserialize<Root>(File.ReadAllText(jsonFile), new JsonSerializerOptions {
 			PropertyNameCaseInsensitive = true
 		});
