@@ -108,6 +108,15 @@ My quiz has been made so that other people can create, share, and play quizzes t
 ### 31/3/2022
 - Added error testing
 
+### 1/4/2022
+- Deleted all code and started to remake in Scratch🤣🤣🤣
+- Changed `utils.Line` to make a new line after and have better character
+- Game now checks for if there is a valid `data.json` file in current directory
+- Switched order of removing quiz
+- Removed the feature to check for if there is valid json file.
+- Made it so that you can't delete a quiz if there is only one
+- Removed ability to have a custom cursor on `ArrowMenu()` menu because it was messing with the spacing
+
 ---
 
 ## Debug and testing stuff
@@ -120,6 +129,7 @@ My quiz has been made so that other people can create, share, and play quizzes t
 | `i` does not exist in the current context | Used `i` instead of `index` | Switched `i` for `index`
 | Can not convert type `char` to `string` | Used single quotes instead of double quotes | Used double quotes |
 | Menu input in `ArrowMenu` is backwards | Down arrow makes the menu go up, and up arrow make sit go down | Switched what each key does |
+| `data.json` is being used by another process | Another process is trying to use the JSON file | Removed un used `File.Create()`
 
 ---
 
