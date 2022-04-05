@@ -134,12 +134,36 @@ My quiz has been made so that other people can create, share, and play quizzes t
 ---
 
 ## C# Programming Conventions
-I have followed C# programming conventions in this program. Some examples include using correct Naming Conventions, Using switch when necessary, Avoiding unneeded and messy code, along with others.
+I have followed C# programming conventions in this program. Here are the conventions that I followed:
+- Naming conventions
+- Commenting conventions
+- Layout conventions
+- Knowing when to use data types
+- Using the new opperator
+
+Here are some examples of the conventions:
+Naming conventions
+```cs
+// Print text in the centre of the screen
+public void CentreText(string text)
+```
+```cs
+int longestItem = title.Length;
+```
+```cs
+Utils utils = new Utils();
+```
+```cs
+List<string> questionAnswers = new List<string>();
+```
+```cs
+int menuInput = utils.ArrowMenu(new[] { "Play Quiz", "Create Quiz", "Remove Quiz", "About", "Exit" }, "Please Select an option");
+```
 
 ---
 
 ## C# Error testing
-| **Enterd data** | **Expected output** | **Output** | **Correcrt** |
+| **Enterd data** | **Expected output** | **Output** | **Correct** |
 |---|---|---|---|
 | `"test"` | `"Please use a number"` will be returned | `"Please use a number"` | ✅
 | `ConsoleKey.DownArrow` | Menu index will increase | Menu index decreased | ❌
@@ -149,4 +173,4 @@ I have followed C# programming conventions in this program. Some examples includ
 | `ConsoleKey.Enter` | Index should be returned | Index is too high | ❌
 | `ConsoleKey.Enter` | Index should be returned | Correct index | ✅
 | `12` | `12` will be returned | `12` | ✅
-| `"Test"` | `"test"` will be rturned | `"test"` | ✅
+| `"Test"` | `"test"` will be returned | `"test"` | ✅
