@@ -117,6 +117,9 @@ My quiz has been made so that other people can create, share, and play quizzes t
 - Made it so that you can't delete a quiz if there is only one
 - Removed ability to have a custom cursor on `ArrowMenu()` menu because it was messing with the spacing
 
+### 6/4/2022
+- Removed all emojis as they only really work if you are using Windows Terminal and its not default installed on the school computers because they are still on Windows 10
+
 ---
 
 ## Debug and testing stuff
