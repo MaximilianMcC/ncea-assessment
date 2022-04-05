@@ -5,10 +5,8 @@ public class Program {
 
 	public static void Main(string[] args)
 	{
-		// General stuff
-		Console.OutputEncoding = System.Text.Encoding.UTF8;
 		Console.Title = "NCEA DTS Assessment";
-        
+
 		// Start the game
         Program program = new Program();
         program.Menu();
@@ -145,9 +143,9 @@ public class Program {
         utils.Line();
         int questionsLength = json.Quiz[quizSelect].Questions.Count;
 
-        utils.CentreText($"You completed the quiz🤯🥳\nFinal score: {score}/{questionsLength}");
-        if (score <= 0) utils.CentreText("You got no questions correct😂");
-        else if (score >= questionsLength) utils.CentreText("You got all correct😤👍");
+        utils.CentreText($"You completed the quiz\nFinal score: {score}/{questionsLength}");
+        if (score <= 0) utils.CentreText("You got no questions correct");
+        else if (score >= questionsLength) utils.CentreText("You got all correct!");
 
         // Bring them back to the menu
         utils.CentreText("\n\nPress any key to go back to the main menu...");
@@ -164,7 +162,7 @@ public class Program {
         Console.Clear();
         
         // Ask them for the quiz name and make the quiz
-        string quizName = Console.ReadLine().Trim();
+        string quizName = utils.GetTextInput("Name of the quiz: ");
         List<QuestionObject> questions = new List<QuestionObject>();
         Quiz quiz = new Quiz() { Name = quizName, Questions = questions } ;
 
@@ -175,7 +173,7 @@ public class Program {
             if (selection == 0)
             {
                 Console.Clear();
-                
+
                 // Ask them for what the question is and how many answers
                 string questionName = utils.GetTextInput("Question name: ");
                 int answersLength = utils.GetNumberInput("How many answers? ");
@@ -206,6 +204,9 @@ public class Program {
                 Root deserializedJson = utils.GetJson();
                 deserializedJson.Quiz.Add(quiz);
                 utils.SetJson(deserializedJson);
+
+                // Put them into the play game menu
+                PlayGame();
             }
             else if (selection == 2)
             {
@@ -229,24 +230,31 @@ public class Program {
         // Ask the user to select a quiz
         string[] quizNames = new string[deserializedJson.Quiz.Count];
         for (int i = 0; i < quizNames.Length; i++) quizNames[i] = deserializedJson.Quiz[i].Name;
-        int quizSelect = utils.ArrowMenu(quizNames, "Select a quiz to remove", "🗑");
+        int quizSelect = utils.ArrowMenu(quizNames, "Select a quiz to remove");
 
         // Ask them if they are sure they want to delete it
-        int wantToDelete = utils.ArrowMenu(new[] { "Delete quiz", "Cancel" }, $"Are you sure you want to delete '{deserializedJson.Quiz[quizSelect]}'?");
-        if (wantToDelete == 0)
+        int wantToDelete = utils.ArrowMenu(new[] { "Cancel", "Delete Quiz" }, $"Are you sure you want to delete '{deserializedJson.Quiz[quizSelect]}'?");
+        if (wantToDelete == 0) Menu();
+        else if (wantToDelete == 1)
         {
-            // Remove the quiz
-            deserializedJson.Quiz.Remove(deserializedJson.Quiz[quizSelect]);
-            utils.SetJson(deserializedJson);
-            
-            // Tell them that they removed it
-            utils.CentreText("\n\nThe quiz has successfully been removed.\nPress any key to return to menu...");
+            // Check for if there is more than 1 quiz
+            if (deserializedJson.Quiz.Count <= 1)
+            {
+                utils.CentreText("\n\nSorry, you can not delete this quiz because it is the only one left.");
+            }
+            else
+            {
+                // Remove the quiz
+                deserializedJson.Quiz.Remove(deserializedJson.Quiz[quizSelect]);
+                utils.SetJson(deserializedJson);
+                
+                // Tell them that they removed it
+                utils.CentreText("\n\nThe quiz has successfully been removed.");
+            }
+
+            // Go back to the menu
+            utils.CentreText("Press any key to return to menu...");
             Console.ReadKey();
-            Menu();
-        }     
-        else
-        {
-            // Put them back to the menu
             Menu();
         }
     }
