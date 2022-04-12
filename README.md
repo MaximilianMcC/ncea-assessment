@@ -1,7 +1,7 @@
 ![Long bay college logo](https://www.longbaycollege.com/wp-content/uploads/2020/09/Long_Bay_College_Logo_Tag2-1024x141.png)
 
 # DTS NCEA Assessment - 91883
-I will be using this GitHub repo to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. I have made the program in C#. **important:** You ___*need*___ to use a terminal that supports UTF-8. Don't use cmd and instead use something like [Windows Terminal](https://www.microsoft.com/en-nz/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab). It will work without it, but you get a better experience when you use something that supports UTF-8.
+I will be using this GitHub repo to keep track of what I have done each day. It will have pseudocode, debugging, and program ideas. I have made the program in C#. You can download and run the code [Here](https://github.com/MaximilianMcC/ncea-assessment/releases/tag/FinishedProgram)
 
 
 **What is the purpose of your quiz and what is it?**
@@ -165,7 +165,7 @@ int menuInput = utils.ArrowMenu(new[] { "Play Quiz", "Create Quiz", "Remove Quiz
 
 ---
 
-## C# Error testing
+## C# Error testingi
 | **Enterd data** | **Expected output** | **Output** | **Correct** |
 |---|---|---|---|
 | `"test"` | `"Please use a number"` will be returned | `"Please use a number"` | ✅
@@ -176,4 +176,4 @@ int menuInput = utils.ArrowMenu(new[] { "Play Quiz", "Create Quiz", "Remove Quiz
 | `ConsoleKey.Enter` | Index should be returned | Index is too high | ❌
 | `ConsoleKey.Enter` | Index should be returned | Correct index | ✅
 | `12` | `12` will be returned | `12` | ✅
-| `"Test"` | `"test"` will be returned | `"test"` | ✅
+| `"Test"` | `"test"` will be returned | `"test"` | ✅ among us game is not good 0/10
