@@ -176,4 +176,4 @@ int menuInput = utils.ArrowMenu(new[] { "Play Quiz", "Create Quiz", "Remove Quiz
 | `ConsoleKey.Enter` | Index should be returned | Index is too high | ❌
 | `ConsoleKey.Enter` | Index should be returned | Correct index | ✅
 | `12` | `12` will be returned | `12` | ✅
-| `"Test"` | `"test"` will be returned | `"test"` | ✅ among us game is not good 0/10
+| `"Test"` | `"test"` will be returned | `"test"` | ✅
